@@ -76,7 +76,7 @@ int main() {
 }
 ```
 
-This is a very short term solution. A better long term solution would be to integrate a specification language such ASCL [^2] into ESBMC.
+This is a very short-term solution. A better long-term solution would be to integrate a specification language such ACSL [^2] into ESBMC.
 
 ## Code 
 
@@ -115,6 +115,12 @@ The following is a lsit of papers that have been useful so far or may be useful 
 + [Neural Termination Analysis](https://arxiv.org/abs/2102.03824)
 
 ## TODO List
+
+The basic implementation now seems to be working reasonably well (albeit tested over a small set of relatively simple benchmarks). However, there are number of tasks outstanding of varying levels of importance:
+
+-[] Add support for `for` and `do-while` loops. Currently, we only support `while` loops.
+-[] Currently we prove *partial correctness*. That is, once we replace the loops with invariants we assume the negation of the loop condition. We could / should also prove termination.
+-[] Support `break` statements. A `break` statement in a loop provides an alternative loop exit point making the proving of candidate invariants significantly more complex as we need to show that the invariant holds at every loop exit location.
 
 ## Helpful Hints
 
