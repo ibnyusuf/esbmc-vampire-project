@@ -36,7 +36,7 @@ Note that we use a special function `__invariant(...)` to mark candidate invaria
 
 When symbolic execution reaches the loop statement, it attempts to prove that the candidate invariant holds (base case). The loop variables are havoced (set to non-deterministic values) and the loop is then symbolically executed a single time. Taking the resulting loop SSA and assuming the inductive hypothesis, we attempt to prove the inductive conclusion. If this succeeds we have proven the candidate invariant to be a true invariant. The loop is replaced with the candidate invariant and symbolic execution continues as normal. 
 
-Note, that that we support having multiple candidate invariants for a loop. For example, the following is valid:
+Note, that we support having multiple candidate invariants for a loop. For example, the following is valid:
 
 ```
 int main() {
@@ -127,6 +127,10 @@ The basic implementation now seems to be working reasonably well (albeit tested 
 
 ## Helpful Hints
 
+The ESBMC code base is pretty large and it takes some time to become familiar with it. Here are some things that I wish I knew before I started work on the codebase:
+
++ ESBMC mantains two internal representations [`irep`](https://github.com/esbmc/esbmc/blob/7ddb6251fa7c851800b768ed97922af9dbf321df/src/util/irep.h#L35) and [`irep2`](https://github.com/esbmc/esbmc/blob/7ddb6251fa7c851800b768ed97922af9dbf321df/src/irep2/irep2.h#L176). `irep` is the odler of the two, based on string and actually the easier to use. `irep2` is heavily basedon templated and uses some fancy Boost macros to produce a lot of boiler plate code. To covert between the two there are various utility functions located in [here](https://github.com/esbmc/esbmc/blob/7ddb6251fa7c851800b768ed97922af9dbf321df/src/util/migrate.h#L1). Both can be printed out using a `dump()` method. This produces a detailed AST for the expression. To convert the internal repressentation back to something that resembles C code, we can use [this function](https://github.com/esbmc/esbmc/blob/7ddb6251fa7c851800b768ed97922af9dbf321df/src/langapi/language_util.h#L18) or the one below it.
+ 
 [^1]: https://ssvlab.github.io/lucasccordeiro/papers/tse2012.pdf
 [^2]: https://frama-c.com/html/acsl.html
 [^3]: https://people.csail.mit.edu/cpacheco/publications/daikon-tool-scp2006.pdf
