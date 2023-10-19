@@ -36,7 +36,7 @@ Note that we use a special function `__invariant(...)` to mark candidate invaria
 
 When symbolic execution reaches the loop statement, it attempts to prove that the candidate invariant holds (base case). The loop variables are havoced (set to non-deterministic values) and the loop is then symbolically executed a single time. Taking the resulting loop SSA and assuming the inductive hypothesis, we attempt to prove the inductive conclusion. If this succeeds we have proven the candidate invariant to be a true invariant. The loop is replaced with the candidate invariant and symbolic execution continues as normal. 
 
-Note, that that we support having multiple candidate invariants for a loop. FOr example, the following is valid:
+Note, that that we support having multiple candidate invariants for a loop. For example, the following is valid:
 
 ```
 int main() {
@@ -51,4 +51,32 @@ int main() {
 
 In such a case, the order in which we attempt to prove the candidates to be invariants may affect what can be proved. To deal with this we make multiple proof passes through the invariants and stop when either all candidates have been proven, or we do not prove any new invariants on a particular pass.
 
-[^1]
+### Proving Invariants
+
+Currently all attempts to prove an invariant are channeled to the Vampire theorem prover. There is no particular reason to select Vampire, any theorem prover could be used here. However, by using a superposition based theorem prover, we are able to handle *quantified* invariants. To this end, a pair of special functions `__forall(...)` and `__exists(...)` are used. For example:
+
+```
+int main() {
+
+  int n =  1000000;
+  int a[n];  
+  int i = 0;
+
+  int x; 
+  __invariant(n == 1000000);
+  __invariant(0 <= i && i <= n);
+  __invariant(__forall((void*)(&x), (!((x < i)  && (x>= 0)) || a[x] == x) ));
+  while(i < n){
+    a[i] = i;
+    i++;
+  }
+
+  __VERIFIER_assert(__exists((void*)(&x), (a[x] == 500)));
+
+}
+```
+
+This is a very short term solution. A better long term solution would be to integrate a specification language such ASCL [^2] into ESBMC.
+
+[^1]: test
+[^2]: https://frama-c.com/html/acsl.html
