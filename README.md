@@ -80,26 +80,37 @@ This is a very short term solution. A better long term solution would be to inte
 
 ## Code 
 
-Development on ESBMC can be found on the following branch:
+All modifications to ESBMC relating to this project can be found on the following branch:
 
 https://github.com/esbmc/esbmc/tree/ahmed-vampire-for-loops
 
 To build ESBMC, please follow the build instructions in the ESBMC repo. To run ESBMC with Vampire, the following command should be used:
 
 ```
-<path to ESBMC> <path to benchmark> --vampire-for-loops --ir --output out3 --vampire-path <path to Vampire executable> --no-bounds-check
+<path to ESBMC> <path to benchmark> --vampire-for-loops --ir --output <output file name> --vampire-path <path to Vampire executable> --no-bounds-check
 ```
 
-It is necessary to run with option `--ir` since Vampire cannot handle bit vectors currently. It is also important to add option `--no-bounds-check` as other wise ESBMC adds extra assertions potentially within a loop unrolling. Currently, we cannot handle assertions within a loop (please view TODO list).
+It is necessary to run with option `--ir` since Vampire cannot handle bit vectors currently. It is also important to add option `--no-bounds-check` as other wise ESBMC adds extra assertions potentially within a loop unrolling. Currently, we cannot handle assertions within a loop (please view TODO list). The option `--output` is used to specify the name of a file to which SMT problems are written. At times it can be useful to add an `abort()` statement to ESBMC to stop execution at a particular point and inspect the content of this file. This allows us to analyse the data being passed from ESBMC to Vampire.
 
 So far, we have been using the main branch of Vampire to cary out tests. Calls to Vampire are carried via a system call as Vampire does not have a workign API currently. 
 
 ## What is in this Repo
 
+Besides for this README, this repo contains a set of benchmarks that I have been using to test the implementation. Some of these are handcrafted and many others come from:
+
+https://github.com/PL-ML/code2inv/tree/master/benchmarks/C_instances/c
+
 ## Useful Papers
+
+The following is a lsit of papers that have been useful so far or may be useful in the future of this project. Please be aware that this selection is very limited and there are of course many other relevant papers. The fields of invariant generation and program verification are huge.
+
++ [Code2Inv: A Deep Learning Framework for Program Verification](https://link.springer.com/chapter/10.1007/978-3-030-53291-8_9)
++ [LEMUR: Integrating Large Language Models in Automated Program Verification](https://arxiv.org/pdf/2310.04870.pdf) I think that this paper is very important and it gives me a lot of hope that the approach that we are taking could be very competitive.
++
 
 ## TODO List
 
+## Helpful Hints
 
 [^1]: https://ssvlab.github.io/lucasccordeiro/papers/tse2012.pdf
 [^2]: https://frama-c.com/html/acsl.html
