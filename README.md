@@ -92,7 +92,7 @@ To build ESBMC, please follow the build instructions in the ESBMC repo. To run E
 
 It is necessary to run with option `--ir` since Vampire cannot handle bit vectors currently. It is also important to add option `--no-bounds-check` as other wise ESBMC adds extra assertions potentially within a loop unrolling. Currently, we cannot handle assertions within a loop (please view TODO list). The option `--output` is used to specify the name of a file to which SMT problems are written. At times it can be useful to add an `abort()` statement to ESBMC to stop execution at a particular point and inspect the content of this file. This allows us to analyse the data being passed from ESBMC to Vampire.
 
-So far, we have been using the main branch of Vampire to cary out tests. Calls to Vampire are carried via a system call as Vampire does not have a workign API currently. 
+So far, we have been using the main branch of Vampire to carry out tests. Vampire is invoked via a system call as it does not have a working API currently. 
 
 ## What is in this Repo
 
