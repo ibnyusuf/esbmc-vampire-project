@@ -118,9 +118,9 @@ The following is a lsit of papers that have been useful so far or may be useful 
 
 The basic implementation now seems to be working reasonably well (albeit tested over a small set of relatively simple benchmarks). However, there are number of tasks outstanding of varying levels of importance:
 
--[ ] Add support for `for` and `do-while` loops. Currently, we only support `while` loops.
--[ ] Currently we prove *partial correctness*. That is, once we replace the loops with invariants we assume the negation of the loop condition. We could / should also prove termination.
--[ ] Support `break` statements. A `break` statement in a loop provides an alternative loop exit point making the proving of candidate invariants significantly more complex as we need to show that the invariant holds at every loop exit location.
+- [ ] Add support for `for` and `do-while` loops. Currently, we only support `while` loops.
+- [ ] Currently we prove *partial correctness*. That is, once we replace the loops with invariants we assume the negation of the loop condition. We could / should also prove termination.
+- [ ] Support `break` statements. A `break` statement in a loop provides an alternative loop exit point making the proving of candidate invariants significantly more complex as we need to show that the invariant holds at every loop exit location.
 
 ## Helpful Hints
 
