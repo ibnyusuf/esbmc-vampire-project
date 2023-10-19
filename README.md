@@ -102,7 +102,7 @@ https://github.com/PL-ML/code2inv/tree/master/benchmarks/C_instances/c
 
 ## Useful Papers
 
-The following is a lsit of papers that have been useful so far or may be useful in the future of this project. Please be aware that this selection is very limited and there are of course many other relevant papers. The fields of invariant generation and program verification are huge.
+The following is a list of papers that have been useful so far or may be useful in the future of this project. Please be aware that this selection is very limited and there are of course many other relevant papers. The fields of invariant generation and program verification are huge.
 
 + [Code2Inv: A Deep Learning Framework for Program Verification](https://link.springer.com/chapter/10.1007/978-3-030-53291-8_9)
 + [LEMUR: Integrating Large Language Models in Automated Program Verification](https://arxiv.org/pdf/2310.04870.pdf) I think that this paper is very important and it gives me a lot of hope that the approach that we are taking could be very competitive.
