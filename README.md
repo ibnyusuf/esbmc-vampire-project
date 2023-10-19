@@ -106,7 +106,13 @@ The following is a lsit of papers that have been useful so far or may be useful 
 
 + [Code2Inv: A Deep Learning Framework for Program Verification](https://link.springer.com/chapter/10.1007/978-3-030-53291-8_9)
 + [LEMUR: Integrating Large Language Models in Automated Program Verification](https://arxiv.org/pdf/2310.04870.pdf) I think that this paper is very important and it gives me a lot of hope that the approach that we are taking could be very competitive.
-+
++ [Scalable and Precise Verification Based on k-induction](https://eprints.soton.ac.uk/433530/1/Final_Thesis.pdf)
++ [Loop Invariants, Analysis, Classification and Examples](https://se.inf.ethz.ch/~meyer/publications/methodology/invariants.pdf)
++ [Learning Shape Analysis](https://link.springer.com/content/pdf/10.1007/978-3-319-66706-5_4.pdf)
++ [From Invariant Checking to Invariant Inference Using Randomized Search](https://theory.stanford.edu/~aiken/publications/papers/cav14.pdf)
++ [Can ChatGPT Support CPA-Checker with ...](https://cpa.sosy-lab.org/2023/slides/full-talk-1.pdf)
++ [Learning Loop Invariants for Program Verification](https://papers.nips.cc/paper/2018/file/65b1e92c585fd4c2159d5f33b5030ff2-Paper.pdf)
++ [Neural Termination Analysis](https://arxiv.org/abs/2102.03824)
 
 ## TODO List
 
