@@ -1,7 +1,7 @@
 # esbmc-vampire-project
 This repo contains benchmarks and other data relating to the ongoing ESBMC - Vampire integration
 
-## Description of project
+## Description of Project
 
 ESBMC works by bounded model checking [^1]. As part of this process, it converts the input C program into GOTO format, then carries out symbolic execution on this GOTO program to create Single Static Assignment (SSA) form. During the symbolic execution, loops are unwound to some depth k. In this integration, we  treat loops differently. To understand the approach we take, consider the following program:
 
@@ -78,5 +78,28 @@ int main() {
 
 This is a very short term solution. A better long term solution would be to integrate a specification language such ASCL [^2] into ESBMC.
 
-[^1]: test
+## Code 
+
+Development on ESBMC can be found on the following branch:
+
+https://github.com/esbmc/esbmc/tree/ahmed-vampire-for-loops
+
+To build ESBMC, please follow the build instructions in the ESBMC repo. To run ESBMC with Vampire, the following command should be used:
+
+```
+<path to ESBMC> <path to benchmark> --vampire-for-loops --ir --output out3 --vampire-path <path to Vampire executable> --no-bounds-check
+```
+
+It is necessary to run with option `--ir` since Vampire cannot handle bit vectors currently. It is also important to add option `--no-bounds-check` as other wise ESBMC adds extra assertions potentially within a loop unrolling. Currently, we cannot handle assertions within a loop (please view TODO list).
+
+So far, we have been using the main branch of Vampire to cary out tests. Calls to Vampire are carried via a system call as Vampire does not have a workign API currently. 
+
+## What is in this Repo
+
+## Useful Papers
+
+## TODO List
+
+
+[^1]: https://ssvlab.github.io/lucasccordeiro/papers/tse2012.pdf
 [^2]: https://frama-c.com/html/acsl.html
