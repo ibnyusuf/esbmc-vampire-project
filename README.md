@@ -121,8 +121,12 @@ The basic implementation now seems to be working reasonably well (albeit tested 
 - [ ] Add support for `for` and `do-while` loops. Currently, we only support `while` loops.
 - [ ] Currently we prove *partial correctness*. That is, once we replace the loops with invariants we assume the negation of the loop condition. We could / should also prove termination.
 - [ ] Support `break` statements. A `break` statement in a loop provides an alternative loop exit point making the proving of candidate invariants significantly more complex as we need to show that the invariant holds at every loop exit location.
+- [ ] Add support for assertion statements *within* loops. Such statements are essentially candidate invariants as they need to hold on every iteration of a loop. However, unlike the candidate invariants specified using `__invariant(..)` they don't necessarily have to hold on loop entrance or even on loop exit.
+- [ ] The big one: introduce automatic candidate inference generation. My vision is to use LLMs for this. Please view paper links above for examples of some steps in this direction. There are of course other invariant generation techniques that we may wish to explore as well such as Daikon [^3].
+- [ ] Another big one: add support for reasoning about memory manipulating programs. This could entail reasoning about separation. It will be really interesting to see whether this can be combined with invariant generation sucessfully.
 
 ## Helpful Hints
 
 [^1]: https://ssvlab.github.io/lucasccordeiro/papers/tse2012.pdf
 [^2]: https://frama-c.com/html/acsl.html
+[^3]: https://people.csail.mit.edu/cpacheco/publications/daikon-tool-scp2006.pdf
