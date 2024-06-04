@@ -14,23 +14,22 @@ void __VERIFIER_assert(int cond) {
 
 int __VERIFIER_nondet_int();
 
-int max(int x, int y){
-  if(x > y) return x;
-  return y;
-}
-
 int main()
 {
-  int i, j;
+  int i =0;
+  int j = 0;;
   int sum = 0;
-  Int INT_MAX = 2147483648;
-  //__invariant(sum + (45000-i * 45000-j) < INT_MAX)
-  for(i = 0; i < 45000; i++){
-    //__invariant(sum + (45000-i * 45000-j) < INT_MAX)
-    //__invariant(i < 45000)
-    for(j = 0; j < 45000; j++){
+  int INT_MAX = 2147483647;
+  __invariant(sum + (45000-i * 45000-j) < INT_MAX);
+  while(i < 45000){
+    j = 0;
+    __invariant(sum + (45000-i * 45000-j) < INT_MAX);
+    __invariant(i < 45000);
+    while(j < 45000){
       sum ++;
+      j++;
     }
+    i++;
   }
   __VERIFIER_assert(sum < INT_MAX );
 
